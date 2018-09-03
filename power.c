@@ -1,40 +1,40 @@
-#include<stdio.h>
+#include <stdio.h>
 
-long long dictionary[10000]={ 0 };
+long long dictionary[10000] = {0};
 
-long long power(long x , long n){
- if(dictionary[n] != 0){
+long long power(long b, long n)
+{
+    if (dictionary[n] != 0)
+    {
 
-//printf("dictionary triggered n=%ld x=%ld value=%ld\r\n",n,x,dictionary[n]);
-return dictionary[n];
- }
- if(n ==1){
-     
-printf("tree bottom triggered \r\n");
-dictionary[n]  = x;
-     return x;
- }
-   
-   if(n%2){
+        return dictionary[n];
+    }
+    if (n == 1)
+    {
 
-dictionary[n] = power(x,n-1)*x;
+        printf("hit the bottom\r\n");
+        dictionary[n] = b;
+        return b;
+    }
 
-   }else{
-dictionary[n] = power(x,(n/2))*power(x,(n/2));
+    if (n % 2)
+    {
 
-   }
+        dictionary[n] = power(b, n - 1) * b;
+    }
+    else
+    {
+        dictionary[n] = power(b, (n / 2)) * power(b, (n / 2));
+    }
 
-
-printf("dictionary triggered n=%ld x=%ld value=%ld\r\n",n,x,dictionary[n]);
-    return  dictionary[n];
+    printf("dictionary triggered n=%ld x=%ld value=%lld\r\n", n, b, dictionary[n]);
+    return dictionary[n];
 }
 
+void main()
+{
 
-void main(){
-
-
-
-printf("%ld\r\n",power(3,19));
+    printf("%lld\r\n", power(3, 19));
 
     return;
 }
